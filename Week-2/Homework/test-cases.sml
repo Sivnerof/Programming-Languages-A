@@ -14,9 +14,17 @@ val test1e = is_older ((2000,1,1),(2000,1,1)) = false
 val test1f = is_older ((1999,2,10),(1998,2,10)) = false
 val test1g = is_older ((1999,2,10),(1999,1,10)) = false
 val test1i = is_older ((1999,2,11),(1999,2,10)) = false
-(*
-val test2 = number_in_month ([(2012,2,28),(2013,12,1)],2) = 1
 
+val test2a = number_in_month ([(2012,2,28),(2013,12,1)],2) = 1
+val test2b = number_in_month ([(2012,3,28),(2013,3,1)],2) = 0
+val test2c = number_in_month ([(2012,2,28),(2013,2,1)],2) = 2
+val test2d = number_in_month ([(2012,2,28),(2013,12,1),(2012,3,1)],2) = 1
+val test2e = number_in_month ([(2012,1,28),(2013,12,1),(2011,5,20)],2) = 0
+val test2f = number_in_month ([(2012,3,28),(2013,3,1),(2011,3,20),(2010,3,10)],3) = 4
+val test2g = number_in_month ([(2012,2,28)],2) = 1
+val test2h = number_in_month ([],2) = 0					
+
+(*								
 val test3 = number_in_months ([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,4]) = 3
 
 val test4 = dates_in_month ([(2012,2,28),(2013,12,1)],2) = [(2012,2,28)]

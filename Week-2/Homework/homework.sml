@@ -15,7 +15,18 @@ fun number_in_month (ds:(int * int * int) list, m:int) =
 	if #2 (hd ds) = m
 	then 1 + number_in_month (tl ds, m)
 	else number_in_month (tl ds, m)
-		 
+
+
+fun number_in_months (ds:(int * int * int) list, ms:int list) =
+    if null ms
+    then 0
+    else
+	(* take head (ms) to number_in_month and tail (ms) to number_in_months *)
+	number_in_month (ds, hd ms) + number_in_months (ds, tl ms)
+			
+	
+
+
 				    
 				   
     

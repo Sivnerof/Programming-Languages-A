@@ -55,7 +55,11 @@ val test6b = get_nth (["hi", "there", "how", "are", "you"], 1) = "hi"
 val test6c = get_nth (["hi", "there", "how", "are", "you"], 5) = "you"
 		     
 
-val test7 = date_to_string (2013, 6, 1) = "June 1, 2013"
+val test7a = date_to_string (2013, 6, 1) = "June 1, 2013"
+val test7b = date_to_string (999, 2, 5) = "February 5, 999"
+val test7c = date_to_string (2013, 12, 1) = "December 1, 2013"
+val test7d = date_to_string (2013, 1, 1) = "January 1, 2013"
+					       
 
 					      (*
 val test8 = number_before_reaching_sum (10, [1,2,3,4,5]) = 3

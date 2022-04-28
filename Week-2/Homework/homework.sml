@@ -64,14 +64,11 @@ fun number_before_reaching_sum (sum:int, ns:int list) =
     else 1 + number_before_reaching_sum (sum - (hd ns), tl ns)
 					
     
-(*
-Write a function what_month that takes a day of year (i.e., an int between 1 and 365) and returns what month that day is in (1 for January, 2 for February, etc.). Use a list holding 12 integers and your answer to the previous problem.
-
-val test9 = what_month 70 = 3
-val what_month = fn : int -> int
-*)
-
-
+fun what_month (d:int) =
+    let val ms = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    in number_before_reaching_sum (d, ms) + 1
+    end
+	
 (*
 10. Write a function month_range that takes two days of the year day1 and day2 and returns an int list [m1,m2,...,mn] where m1 is the month of day1, m2 is the month of day1+1, ..., and mn is the month of day day2. Note the result will have length day2 - day1 + 1 or length 0 if day1>day2.
 

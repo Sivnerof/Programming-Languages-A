@@ -77,22 +77,14 @@ fun month_range (day1:int, day2:int) =
 	what_month (day1) :: month_range (day1 + 1, day2)
 	    
 	     
-	
-(*
-11. Write a function oldest that takes a list of dates and evaluates to an (int*int*int) option. It evaluates to NONE if the list has no dates and SOME d if the date d is the oldest date in the list.
-
-val test11 = oldest([(2012,2,28),(2011,3,31),(2011,4,28)]) = SOME (2011,3,31)
-val oldest = fn : (int * int * int) list -> (int * int * int) option
-*)
-
-
-(*
-12. Challenge Problem: Write functions number_in_months_challenge and dates_in_months_challenge that are like your solutions to problems 3 and 5 except having a month in the second argument multiple times has no more effect than having it once. (Hint: Remove duplicates, then use previous work.)
-*)
-
-
-(*
-13. Challenge Problem: Write a function reasonable_date that takes a date and determines if it describes a real date in the common era. A “real date” has a positive year (year 0 did not exist), a month between 1 and 12, and a day appropriate for the month. Solutions should properly handle leap years. Leap years are years that are either divisible by 400 or divisible by 4 but not divisible by 100.
-(Do not worry about days possibly lost in the conversion to the Gregorian calendar in the Late 1500s.
-*)			
-	
+fun oldest (ds:(int * int * int) list) =
+    if null ds
+    then NONE
+    else
+	let val tl_ans = oldest (tl ds)
+	in
+	    if isSome tl_ans
+	       andalso is_older((#1 (valOf tl_ans), #2 (valOf tl_ans), #3 (valOf tl_ans)), (#1 (hd ds), #2 (hd ds), #3 (hd ds)))
+            then tl_ans
+            else SOME(hd ds)
+        end

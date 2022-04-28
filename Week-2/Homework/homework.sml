@@ -68,14 +68,16 @@ fun what_month (d:int) =
     let val ms = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     in number_before_reaching_sum (d, ms) + 1
     end
+
+
+fun month_range (day1:int, day2:int) =
+    if day1 > day2
+    then []
+    else
+	what_month (day1) :: month_range (day1 + 1, day2)
+	    
+	     
 	
-(*
-10. Write a function month_range that takes two days of the year day1 and day2 and returns an int list [m1,m2,...,mn] where m1 is the month of day1, m2 is the month of day1+1, ..., and mn is the month of day day2. Note the result will have length day2 - day1 + 1 or length 0 if day1>day2.
-
-val test10 = month_range (31, 34) = [1,2,2,2]
-val month_range = fn : int * int -> int list
-*)
-
 (*
 11. Write a function oldest that takes a list of dates and evaluates to an (int*int*int) option. It evaluates to NONE if the list has no dates and SOME d if the date d is the oldest date in the list.
 

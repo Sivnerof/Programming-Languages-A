@@ -61,9 +61,13 @@ val test7c = date_to_string (2013, 12, 1) = "December 1, 2013"
 val test7d = date_to_string (2013, 1, 1) = "January 1, 2013"
 					       
 
-					      (*
-val test8 = number_before_reaching_sum (10, [1,2,3,4,5]) = 3
+val test8a = number_before_reaching_sum (10, [1,2,3,4,5]) = 3
+val test8b = number_before_reaching_sum (1, [1,2,3,4,5]) = 0
+val test8c = number_before_reaching_sum (0, [1,2,3,4,5]) = 0
+val test8d = number_before_reaching_sum (15, [1,2,3,4,5]) = 4
+							       
 
+							       (*
 val test9 = what_month 70 = 3
 
 val test10 = month_range (31, 34) = [1,2,2,2]

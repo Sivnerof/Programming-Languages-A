@@ -46,19 +46,7 @@ fun get_nth (strs:string list, n:int) =
     else
 	get_nth (tl strs, n - 1)
 
-
-(*
-Use the operator ^ for concatenating strings and the library function Int.toString for converting an int to a string. 
-For producing the month part, do not use a bunch of conditionals.
-Instead, use a list holding 12 strings and your answer to the previous problem. For consistency, put a comma following the day and use capitalized English month names: January, February, March, April, May, June, July, August, September, October, November, December.
-
-Correct Bindings:
-	val date_to_string = fn : int * int * int -> string
-
-Test Case:
-	val test7 = date_to_string (2013, 6, 1) = "June 1, 2013"
-*)
-
+		
 fun date_to_string (y:int, m:int, d: int) =
     let val ms =
 	    ["January", "February", "March", "April", "May", "June",
@@ -67,8 +55,45 @@ fun date_to_string (y:int, m:int, d: int) =
     in
 	get_nth (ms, m) ^ " " ^ Int.toString (d) ^ ", " ^ Int.toString (y)
     end
-	
+
+
+fun number_before_reaching_sum (sum:int, ns:int list) =
+    if sum < (hd ns)
+       orelse sum = (hd ns)
+    then 0
+    else 1 + number_before_reaching_sum (sum - (hd ns), tl ns)
+					
     
+(*
+Write a function what_month that takes a day of year (i.e., an int between 1 and 365) and returns what month that day is in (1 for January, 2 for February, etc.). Use a list holding 12 integers and your answer to the previous problem.
+
+val test9 = what_month 70 = 3
+val what_month = fn : int -> int
+*)
 
 
-		
+(*
+10. Write a function month_range that takes two days of the year day1 and day2 and returns an int list [m1,m2,...,mn] where m1 is the month of day1, m2 is the month of day1+1, ..., and mn is the month of day day2. Note the result will have length day2 - day1 + 1 or length 0 if day1>day2.
+
+val test10 = month_range (31, 34) = [1,2,2,2]
+val month_range = fn : int * int -> int list
+*)
+
+(*
+11. Write a function oldest that takes a list of dates and evaluates to an (int*int*int) option. It evaluates to NONE if the list has no dates and SOME d if the date d is the oldest date in the list.
+
+val test11 = oldest([(2012,2,28),(2011,3,31),(2011,4,28)]) = SOME (2011,3,31)
+val oldest = fn : (int * int * int) list -> (int * int * int) option
+*)
+
+
+(*
+12. Challenge Problem: Write functions number_in_months_challenge and dates_in_months_challenge that are like your solutions to problems 3 and 5 except having a month in the second argument multiple times has no more effect than having it once. (Hint: Remove duplicates, then use previous work.)
+*)
+
+
+(*
+13. Challenge Problem: Write a function reasonable_date that takes a date and determines if it describes a real date in the common era. A “real date” has a positive year (year 0 did not exist), a month between 1 and 12, and a day appropriate for the month. Solutions should properly handle leap years. Leap years are years that are either divisible by 400 or divisible by 4 but not divisible by 100.
+(Do not worry about days possibly lost in the conversion to the Gregorian calendar in the Late 1500s.
+*)			
+	
